@@ -46,5 +46,6 @@ X_test = pipeline.transform(X_test)
 train = pd.concat([X_train, y_train], axis=1)
 test = pd.concat([X_test, y_test], axis=1)
 
+PREPROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 train.to_csv(PREPROCESSED_DIR / "train.csv")
 test.to_csv(PREPROCESSED_DIR / "test.csv")
