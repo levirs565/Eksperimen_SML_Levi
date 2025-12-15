@@ -29,4 +29,5 @@ jobs:
       - name: Commit & Push changes
         uses: GuillaumeFalourd/git-commit-push@v1.3
         with:
+          access_token: ${{ github.token }}
           commit_message: "actions: Preprocess data"
