@@ -30,13 +30,13 @@ pipeline = Pipeline([
      ),
     ("scale_encoding",
         ColumnTransformer([
-            ("scaler", PowerTransformer(method="yeo-johnson"),
-             make_column_selector(dtype_include=np.number)),
-            ("one_hot", OneHotEncoder(sparse_output=False, handle_unknown='ignore'), [
+             ("one_hot", OneHotEncoder(sparse_output=False, handle_unknown='ignore'), [
                 "Location", "WindGustDir", "WindDir9am", "WindDir3pm"]),
             ("label", OrdinalEncoder(handle_unknown="use_encoded_value",
-                                     unknown_value=-1), ["RainToday"])
-        ]).set_output(transform='pandas')
+                                     unknown_value=-1), ["RainToday"]),
+            ("scaler", PowerTransformer(method="yeo-johnson"),
+             make_column_selector(dtype_include=np.number))
+        ], verbose_feature_names_out=False).set_output(transform='pandas')
      )
 ])
 
