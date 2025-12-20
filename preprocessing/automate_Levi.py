@@ -17,7 +17,7 @@ df = pd.read_csv(BASE_DIR / "weather_raw" / "Weather Training Data.csv").drop(
 
 X, y = df.drop(columns=["RainTomorrow"]), df["RainTomorrow"]
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.25, random_state=42)
+    X, y, test_size=0.25, random_state=42, stratify=y)
 
 pipeline = Pipeline([
     ("impute",
