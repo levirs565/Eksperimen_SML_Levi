@@ -1,3 +1,4 @@
+import joblib
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import OrdinalEncoder, OneHotEncoder, PowerTransformer
@@ -49,3 +50,5 @@ test = pd.concat([X_test, y_test], axis=1)
 PREPROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 train.to_csv(PREPROCESSED_DIR / "train.csv")
 test.to_csv(PREPROCESSED_DIR / "test.csv")
+
+joblib.dump(pipeline, PREPROCESSED_DIR / "pipeline.joblib")
